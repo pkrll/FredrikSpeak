@@ -5,7 +5,7 @@
 //  Created by Ardalan Samimi on 2019-01-17.
 //
 
-print("Please input string:")
+print("Please input string to convert to FredrikSpeak:")
 
 let vowelsLower = "aeiouåäö"
 let vowelsUpper = "AEIOUÅÄÖ"
