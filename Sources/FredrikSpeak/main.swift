@@ -4,11 +4,12 @@
 //
 //  Created by Ardalan Samimi on 2019-01-17.
 //
+import AppKit
 
 print("Please input string to convert to FredrikSpeak:")
 
-let vowelsLower = "aeiouåäö"
-let vowelsUpper = "AEIOUÅÄÖ"
+let vowelsLower = "aeiouåä"
+let vowelsUpper = "AEIOUÅÄ"
 
 let line = readLine() ?? ""
 
@@ -19,4 +20,11 @@ let replaced = line.map { (char) -> Character in
 	return char
 }
 
-print(String(replaced))
+if #available(macOS 10.13, *) {
+	let pasteboard = NSPasteboard.init(name: .general)
+	pasteboard.declareTypes([.string], owner: nil)
+	pasteboard.setString(String(replaced), forType: .string)
+	print("The string has been Fredrikified and copied to the clipboard!")
+} else {
+  print(String(replaced))
+}
